@@ -1,50 +1,79 @@
-# Visualisateur de la Suite de Fibonacci
+# Visualisateur Avancé de la Suite de Fibonacci
 
 ## Description
 
-Ce projet vise à développer une application en Python qui permet de calculer la suite de Fibonacci en trois versions différentes :
-1. Version récursive
-2. Version récursive avec programmation dynamique (mémoïsation)
-3. Version itérative
+Ce programme propose une interface graphique avancée développée avec Tkinter, permettant de calculer la suite de Fibonacci à l'aide de trois méthodes différentes. L'application fournit une visualisation claire des temps d'exécution, ainsi que des résultats détaillés pour chaque méthode.
 
-L'application mesure également le temps d'exécution de chaque méthode et compare les résultats de manière visuelle à l'aide d'une interface graphique conviviale.
+## 🖥️ Fonctionnalités Principales
 
-## Objectif
+- **Saisie du Numéro de Terme :** Entrez le numéro du terme de Fibonacci que vous souhaitez calculer.
+- **Calcul Simultané :** Exécution des trois méthodes (récursive, récursive avec programmation dynamique et itérative) en parallèle.
+- **Visualisation Graphique :** Affichage des temps d'exécution sous forme de graphiques attractifs.
+- **Tableau des Résultats :** Détails des résultats pour chaque méthode, avec des temps d'exécution clairs.
 
-Le programme a pour but de démontrer les différentes approches de calcul de la suite de Fibonacci et de mettre en évidence les différences de performance entre elles. Il permet aux utilisateurs d'entrer un entier `n` et de voir les résultats de chaque méthode ainsi que le temps qu'elles ont mis à exécuter.
+## 📊 Visualisation
 
-## Fonctionnalités Principales
+- **Graphique à Barres :** Comparaison visuelle des temps d'exécution des trois méthodes.
+- **Étiquettes Précises :** Affichage des temps d'exécution exacts sur chaque barre du graphique.
+- **Tableau Récapitulatif :** Présentation des résultats de manière structurée.
 
-- **Calcul des Valeurs de Fibonacci :**
-  - Implémentation de trois méthodes :
-    - Récursive
-    - Récursive avec programmation dynamique
-    - Itérative
-- **Mesure du Temps d'Exécution :**
-  - Mesure et affichage du temps nécessaire pour chaque méthode.
-- **Interface Graphique :**
-  - Utilisation de `Tkinter` ou `PyQt` pour une interface utilisateur attrayante.
-  - Champs de saisie pour entrer le numéro du terme de Fibonacci.
-  - Boutons pour lancer le calcul pour chaque méthode.
-  - Affichage des résultats et des temps d'exécution.
-- **Comparaison des Résultats :**
-  - Présentation des résultats sous forme de tableaux ou de listes.
-  - Visualisation des temps d'exécution via des graphiques (optionnellement avec `matplotlib`).
-- **Gestion des Erreurs :**
-  - Validation des entrées utilisateur pour s'assurer qu'elles sont des entiers non négatifs.
+## ⚠️ Points Importants
 
-## Technologies Utilisées
+- **Gestion des Erreurs :** Prise en compte des erreurs, notamment le dépassement de pile pour la méthode récursive.
+- **Interface Responsive :** Adaptée pour différents formats d'écran, garantissant une utilisation facile.
+- **Style Moderne :** Conception esthétique et lisible pour améliorer l'expérience utilisateur.
 
-- **Langage :** Python
+## Prérequis
+
+Pour exécuter ce script, assurez-vous d'avoir installé :
+
+- **Python 3.x**
 - **Bibliothèques :**
-  - `Tkinter` ou `PyQt` pour l’interface graphique.
-  - `time` pour mesurer le temps d’exécution.
-  - `matplotlib` (optionnel) pour la visualisation des temps d’exécution sous forme de graphique.
+  - `tkinter` (inclus avec Python)
+  - `matplotlib` (à installer)
 
-## Installation
-
-Pour exécuter ce projet, assurez-vous d'avoir Python installé sur votre machine. Ensuite, clonez le dépôt et installez les bibliothèques nécessaires :
+Vous pouvez installer `matplotlib` avec la commande suivante :
 
 ```bash
-git clone https://github.com/jaouad4/algorithmes-suite-fibonacci.git
-pip install -r requirements.txt
+pip install matplotlib
+```
+
+## Utilisation
+
+1.Lancez le script Python.
+2.Entrez un nombre (recommandé : entre 10 et 35).
+3.Cliquez sur le bouton "Calculer".
+
+## Limitations
+
+-Pour des valeurs de n supérieures à 35-40, la méthode récursive devient très lente, voire impraticable.
+-Les graphiques sont conçus principalement pour illustrer les temps d'exécution.
+
+## 🔍 Modifications Principales de la Version 2
+
+=>Mesures de Temps Améliorées :
+
+  -Utilisation de timeit pour des mesures plus précises.
+  -Possibilité de définir le nombre d'exécutions.
+  -Calcul du temps moyen par exécution.
+
+=>Visualisation Améliorée :
+
+  -Échelle logarithmique pour mettre en lumière les différences de performance.
+  -Coloration des barres dans le graphique pour une meilleure lisibilité.
+  -Étiquettes précises sur les temps d'exécution.
+  
+=>Fonctionnalités Supplémentaires :
+
+  -Champ pour définir le nombre d'exécutions favorisant des analyses plus détaillées.
+  -Gestion des méthodes non applicables (notamment pour les cas de la méthode récursive avec des valeurs de n élevées).
+
+## 💡 Conseils d'Utilisation
+
+-Pour des valeurs de n faibles (10-20), envisagez d'augmenter le nombre d'exécutions (1000-10000) pour des mesures plus représentatives.
+-Pour des valeurs de n plus élevées (30-35), réduisez le nombre d’exécutions pour éviter des temps d'attente excessifs.
+
+## 🔍 Détails Techniques
+-Récursive : Complexité O(2^n), ce qui la rend très lente pour des valeurs élevées.
+-Dynamique : Complexité O(n), offrant des performances rapides et efficaces.
+-Itératif : Complexité O(n), très rapide avec un faible usage mémoire.
