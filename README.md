@@ -40,40 +40,41 @@ pip install matplotlib
 
 ## Utilisation
 
-1.Lancez le script Python.
-2.Entrez un nombre (recommandé : entre 10 et 35).
-3.Cliquez sur le bouton "Calculer".
+1. Lancez le script Python.
+2. Entrez un nombre (recommandé : entre 10 et 35).
+3. Cliquez sur le bouton "Calculer".
 
 ## Limitations
 
--Pour des valeurs de n supérieures à 35-40, la méthode récursive devient très lente, voire impraticable.
--Les graphiques sont conçus principalement pour illustrer les temps d'exécution.
+- Pour des valeurs de `n` supérieures à 35-40, la méthode récursive devient très lente, voire impraticable.
+- Les graphiques sont conçus principalement pour illustrer les temps d'exécution.
 
 ## 🔍 Modifications Principales de la Version 2
 
-=>Mesures de Temps Améliorées :
+### Mesures de Temps Améliorées :
 
-  -Utilisation de timeit pour des mesures plus précises.
-  -Possibilité de définir le nombre d'exécutions.
-  -Calcul du temps moyen par exécution.
+- Utilisation de `timeit` pour des mesures plus précises.
+- Possibilité de définir le nombre d'exécutions.
+- Calcul du temps moyen par exécution.
 
-=>Visualisation Améliorée :
+### Visualisation Améliorée :
 
-  -Échelle logarithmique pour mettre en lumière les différences de performance.
-  -Coloration des barres dans le graphique pour une meilleure lisibilité.
-  -Étiquettes précises sur les temps d'exécution.
+- Échelle logarithmique pour mettre en lumière les différences de performance.
+- Coloration des barres dans le graphique pour une meilleure lisibilité.
+- Étiquettes précises sur les temps d'exécution.
   
-=>Fonctionnalités Supplémentaires :
+### Fonctionnalités Supplémentaires :
 
-  -Champ pour définir le nombre d'exécutions favorisant des analyses plus détaillées.
-  -Gestion des méthodes non applicables (notamment pour les cas de la méthode récursive avec des valeurs de n élevées).
+- Champ pour définir le nombre d'exécutions favorisant des analyses plus détaillées.
+- Gestion des méthodes non applicables (notamment pour les cas de la méthode récursive avec des valeurs de `n` élevées).
 
 ## 💡 Conseils d'Utilisation
 
--Pour des valeurs de n faibles (10-20), envisagez d'augmenter le nombre d'exécutions (1000-10000) pour des mesures plus représentatives.
--Pour des valeurs de n plus élevées (30-35), réduisez le nombre d’exécutions pour éviter des temps d'attente excessifs.
+- Pour des valeurs de `n` faibles (10-20), envisagez d'augmenter le nombre d'exécutions (1000-10000) pour des mesures plus représentatives.
+- Pour des valeurs de `n` plus élevées (30-35), réduisez le nombre d’exécutions pour éviter des temps d'attente excessifs.
 
 ## 🔍 Détails Techniques
--Récursive : Complexité O(2^n), ce qui la rend très lente pour des valeurs élevées.
--Dynamique : Complexité O(n), offrant des performances rapides et efficaces.
--Itératif : Complexité O(n), très rapide avec un faible usage mémoire.
+
+- **Récursive :** Complexité O(2^n), ce qui la rend très lente pour des valeurs élevées.
+- **Dynamique :** Complexité O(n), offrant des performances rapides et efficaces.
+- **Itératif :** Complexité O(n), très rapide avec un faible usage mémoire.
