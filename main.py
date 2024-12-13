@@ -47,7 +47,7 @@ class FibonacciComparator:
 
     def create_widgets(self):
         # Titre
-        ttk.Label(self.main_frame, text="Comparateur de Fibonacci",
+        ttk.Label(self.main_frame, text="Comparateur de Fibonacci - JAOUAD Salah-Eddine",
                   font=('Arial', 16, 'bold')).pack(pady=10)
 
         # Frame pour les inputs
