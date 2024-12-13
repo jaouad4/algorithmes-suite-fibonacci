@@ -7,7 +7,7 @@ Ce programme propose une interface graphique avancée développée avec Tkinter,
 ## 🖥️ Fonctionnalités Principales
 
 - **Saisie du Numéro de Terme :** Entrez le numéro du terme de Fibonacci que vous souhaitez calculer.
-- **Calcul Simultané :** Exécution des trois méthodes (récursive, récursive avec programmation dynamique et itérative) en parallèle.
+- **Calcul Simultané :** Exécution des trois méthodes (récursive, dynamique et itérative) en parallèle.
 - **Visualisation Graphique :** Affichage des temps d'exécution sous forme de graphiques attractifs.
 - **Tableau des Résultats :** Détails des résultats pour chaque méthode, avec des temps d'exécution clairs.
 
