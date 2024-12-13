@@ -46,6 +46,5 @@ Le programme a pour but de démontrer les différentes approches de calcul de la
 Pour exécuter ce projet, assurez-vous d'avoir Python installé sur votre machine. Ensuite, clonez le dépôt et installez les bibliothèques nécessaires :
 
 ```bash
-git clone <URL_DU_DEPOT>
-cd <NOM_DU_DOSSIER>
+git clone https://github.com/jaouad4/algorithmes-suite-fibonacci.git
 pip install -r requirements.txt
