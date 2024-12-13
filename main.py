@@ -1,15 +1,16 @@
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, messagebox
 import time
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+import timeit
 
 
 class FibonacciComparator:
     def __init__(self, master):
         self.master = master
         master.title("Comparateur de Fibonacci")
-        master.geometry("800x600")
+        master.geometry("900x700")
         master.configure(bg='#f0f0f0')
 
         # Styles
@@ -59,6 +60,12 @@ class FibonacciComparator:
         self.n_entry.pack(side=tk.LEFT, padx=5)
         self.n_entry.insert(0, "30")
 
+        # Label et entrée pour le nombre d'exécutions
+        ttk.Label(input_frame, text="Nombre d'exécutions :").pack(side=tk.LEFT, padx=5)
+        self.exec_entry = ttk.Entry(input_frame, width=10)
+        self.exec_entry.pack(side=tk.LEFT, padx=5)
+        self.exec_entry.insert(0, "1000")
+
         # Bouton de calcul
         ttk.Button(input_frame, text="Calculer", command=self.calculer).pack(side=tk.LEFT, padx=5)
 
@@ -67,7 +74,7 @@ class FibonacciComparator:
         self.result_frame.pack(fill=tk.BOTH, expand=True, pady=10)
 
         # Création de la figure matplotlib
-        self.figure, self.ax = plt.subplots(figsize=(8, 4))
+        self.figure, self.ax = plt.subplots(figsize=(9, 5))
         self.canvas = FigureCanvasTkAgg(self.figure, master=self.result_frame)
         self.canvas_widget = self.canvas.get_tk_widget()
         self.canvas_widget.pack(fill=tk.BOTH, expand=True)
@@ -75,39 +82,53 @@ class FibonacciComparator:
     def calculer(self):
         try:
             n = int(self.n_entry.get())
+            executions = int(self.exec_entry.get())
 
-            # Calculs et mesure du temps
-            temps_resultats = []
+            # Préparation des méthodes et résultats
             methodes = [
-                ("Récursif", self.fibonacci_recursif),
-                ("Dynamique", self.fibonacci_dynamique),
-                ("Itératif", self.fibonacci_iteratif)
+                ("Récursif", lambda: self.fibonacci_recursif(n), n <= 30),
+                ("Dynamique", lambda: self.fibonacci_dynamique(n), True),
+                ("Itératif", lambda: self.fibonacci_iteratif(n), True)
             ]
 
             resultats = []
-            for nom, methode in methodes:
-                debut = time.time()
-                try:
-                    resultat = methode(n)
-                    temps = time.time() - debut
-                    resultats.append((nom, resultat, temps))
-                    temps_resultats.append(temps)
-                except RecursionError:
-                    resultats.append((nom, "Dépassement", 0))
+            temps_resultats = []
+
+            # Calcul des performances
+            for nom, methode, est_applicable in methodes:
+                if est_applicable:
+                    try:
+                        # Utilisation de timeit pour des mesures précises
+                        temps = timeit.timeit(methode, number=executions)
+                        resultat = methode()
+                        resultats.append((nom, resultat, temps / executions))
+                        temps_resultats.append(temps / executions)
+                    except RecursionError:
+                        resultats.append((nom, "Dépassement", 0))
+                        temps_resultats.append(0)
+                else:
+                    resultats.append((nom, "Non applicable", 0))
                     temps_resultats.append(0)
 
             # Effacer le graphique précédent
             self.ax.clear()
 
-            # Créer un graphique à barres
+            # Créer un graphique à barres avec une échelle logarithmique
             methodes_noms = [r[0] for r in resultats]
-            self.ax.bar(methodes_noms, temps_resultats)
-            self.ax.set_ylabel('Temps (secondes)')
-            self.ax.set_title(f'Comparaison des performances (n = {n})')
+            bars = self.ax.bar(methodes_noms, temps_resultats)
+            self.ax.set_ylabel('Temps moyen par exécution (secondes)')
+            self.ax.set_title(f'Comparaison des performances (n = {n}, {executions} exécutions)')
+            self.ax.set_yscale('log')  # Échelle logarithmique pour mieux voir les différences
+
+            # Coloration des barres
+            couleurs = ['red', 'green', 'blue']
+            for bar, couleur in zip(bars, couleurs):
+                bar.set_color(couleur)
 
             # Ajouter des étiquettes de valeur sur les barres
             for i, v in enumerate(temps_resultats):
-                self.ax.text(i, v, f'{v:.6f}', ha='center', va='bottom')
+                if v > 0:
+                    self.ax.text(i, v, f'{v:.6f}', ha='center', va='bottom')
 
             # Rafraîchir le canvas
             self.canvas.draw()
@@ -116,7 +137,7 @@ class FibonacciComparator:
             self.afficher_resultats(resultats)
 
         except ValueError:
-            tk.messagebox.showerror("Erreur", "Veuillez entrer un nombre valide")
+            messagebox.showerror("Erreur", "Veuillez entrer des nombres valides")
 
     def afficher_resultats(self, resultats):
         # Détruire les anciens widgets de résultats s'ils existent
@@ -125,7 +146,7 @@ class FibonacciComparator:
                 widget.destroy()
 
         # Créer un tableau de résultats
-        columns = ('Méthode', 'Résultat', 'Temps (s)')
+        columns = ('Méthode', 'Résultat', 'Temps moyen (s)')
         tree = ttk.Treeview(self.result_frame, columns=columns, show='headings')
 
         for col in columns:
