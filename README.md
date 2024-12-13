@@ -1,80 +1,100 @@
-# Visualisateur Avancé de la Suite de Fibonacci
+# Application : Comparaison des implémentations de la suite de Fibonacci
 
-## Description
+Ce dépôt contient trois implémentations différentes de la suite de Fibonacci en Python :
 
-Ce programme propose une interface graphique avancée développée avec Tkinter, permettant de calculer la suite de Fibonacci à l'aide de trois méthodes différentes. L'application fournit une visualisation claire des temps d'exécution, ainsi que des résultats détaillés pour chaque méthode.
+1. **Version récursive** : Implémentation simple mais inefficace pour de grandes valeurs de `n`.
+2. **Version récursive avec programmation dynamique** : Amélioration de la version récursive grâce à la mémorisation.
+3. **Version itérative** : Version optimisée en termes de performance et d'utilisation mémoire.
 
-## 🖥️ Fonctionnalités Principales
+## Objectifs
 
-- **Saisie du Numéro de Terme :** Entrez le numéro du terme de Fibonacci que vous souhaitez calculer.
-- **Calcul Simultané :** Exécution des trois méthodes (récursive, dynamique et itérative) en parallèle.
-- **Visualisation Graphique :** Affichage des temps d'exécution sous forme de graphiques attractifs.
-- **Tableau des Résultats :** Détails des résultats pour chaque méthode, avec des temps d'exécution clairs.
+- Implémenter les trois versions de la suite de Fibonacci.
+- Calculer et comparer les temps d'exécution de chaque version.
+- Visualiser et afficher les résultats sous forme de tableau et de graphiques.
 
-## 📊 Visualisation
+## Fichiers inclus
 
-- **Graphique à Barres :** Comparaison visuelle des temps d'exécution des trois méthodes.
-- **Étiquettes Précises :** Affichage des temps d'exécution exacts sur chaque barre du graphique.
-- **Tableau Récapitulatif :** Présentation des résultats de manière structurée.
+### 1. `visualisateur.py`
 
-## ⚠️ Points Importants
+Une application graphique créée avec `Tkinter` qui permet de comparer les performances des trois implémentations. Elle inclut :
 
-- **Gestion des Erreurs :** Prise en compte des erreurs, notamment le dépassement de pile pour la méthode récursive.
-- **Interface Responsive :** Adaptée pour différents formats d'écran, garantissant une utilisation facile.
-- **Style Moderne :** Conception esthétique et lisible pour améliorer l'expérience utilisateur.
+- **Entrées utilisateur** :
+  - Le numéro du terme de Fibonacci (`n`).
+  - Le nombre d'exécutions pour les tests de performance.
+- **Sorties** :
+  - Un graphique comparant les temps moyens d'exécution.
+  - Un tableau affichant les résultats des trois méthodes (résultats et temps moyens).
+- **Dépendances** :
+  - `Tkinter` pour l'interface utilisateur.
+  - `matplotlib` pour les graphiques.
+  - `timeit` pour des mesures précises des temps d'exécution.
 
-## Prérequis
+### 2. `tableau.py`
 
-Pour exécuter ce script, assurez-vous d'avoir installé :
+Un programme similaire à `visualisateur.py` qui se concentre principalement sur la création et l'affichage des résultats sous forme de tableau.
 
-- **Python 3.x**
-- **Bibliothèques :**
-  - `tkinter` (inclus avec Python)
-  - `matplotlib` (à installer)
+## Installation
 
-Vous pouvez installer `matplotlib` avec la commande suivante :
+### Prérequis
 
-```bash
-pip install matplotlib
-```
+- Python 3.7 ou supérieur
+- Modules Python nécessaires :
+  - `matplotlib`
+  - `tkinter`
+
+### Étapes
+
+1. Clonez le dépôt :
+
+   ```bash
+   git clone https://github.com/jaouad4/algorithmes-suite-fibonacci.git
+   ```
+
+2. Installez les dépendances (si elles ne sont pas déjà installées) :
+
+   ```bash
+   pip install matplotlib
+   ```
+
+3. Exécutez le programme principal :
+
+   ```bash
+   python visualisateur.py
+   ```
+   ```bash
+   python tableau.py
+   ```
 
 ## Utilisation
 
-1. Lancez le script Python.
-2. Entrez un nombre (recommandé : entre 10 et 35).
-3. Cliquez sur le bouton "Calculer".
+1. Lancez `visualisateur.py`.
+2. Entrez la valeur de `n` et le nombre d'exécutions souhaité.
+3. Cliquez sur le bouton **Calculer**.
+4. Visualisez les résultats dans le graphique et le tableau générés.
 
-## Limitations
+-Même démarche pour `tableau.py`.
 
-- Pour des valeurs de `n` supérieures à 35-40, la méthode récursive devient très lente, voire impraticable.
-- Les graphiques sont conçus principalement pour illustrer les temps d'exécution.
+## Notes importantes
 
-## 🔍 Modifications Principales de la Version 2
+- La version récursive devient très inefficace pour des valeurs de `n` supérieures à 30 en raison de sa complexité exponentielle.
+- Les temps d'exécution sont calculés en prenant la moyenne de plusieurs exécutions pour plus de précision.
 
-### Mesures de Temps Améliorées :
+## Auteur
 
-- Utilisation de `timeit` pour des mesures plus précises.
-- Possibilité de définir le nombre d'exécutions.
-- Calcul du temps moyen par exécution.
+**JAOUAD Salah-Eddine**
 
-### Visualisation Améliorée :
+Cette application a été réalisé dans le but de comparer différentes approches algorithmiques et d'évaluer leurs performances.
 
-- Échelle logarithmique pour mettre en lumière les différences de performance.
-- Coloration des barres dans le graphique pour une meilleure lisibilité.
-- Étiquettes précises sur les temps d'exécution.
-  
-### Fonctionnalités Supplémentaires :
+---
 
-- Champ pour définir le nombre d'exécutions favorisant des analyses plus détaillées.
-- Gestion des méthodes non applicables (notamment pour les cas de la méthode récursive avec des valeurs de `n` élevées).
+### Capture d'écran
 
-## 💡 Conseils d'Utilisation
+`visiualisateur.py`
+![nisiualisateur.py](Images/visiualisateur.py.png)
 
-- Pour des valeurs de `n` faibles (10-20), envisagez d'augmenter le nombre d'exécutions (1000-10000) pour des mesures plus représentatives.
-- Pour des valeurs de `n` plus élevées (30-35), réduisez le nombre d’exécutions pour éviter des temps d'attente excessifs.
+`tableau.py`
+![tableau.py](Images/tableau.py.png)
 
-## 🔍 Détails Techniques
+### Contributions
 
-- **Récursive :** Complexité O(2^n), ce qui la rend très lente pour des valeurs élevées.
-- **Dynamique :** Complexité O(n), offrant des performances rapides et efficaces.
-- **Itératif :** Complexité O(n), très rapide avec un faible usage mémoire.
+Les contributions sont les bienvenues. Veuillez ouvrir une issue ou un pull request pour toute suggestion ou amélioration.
