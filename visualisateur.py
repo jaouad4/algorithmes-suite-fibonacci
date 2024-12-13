@@ -9,7 +9,7 @@ import timeit
 class FibonacciComparator:
     def __init__(self, master):
         self.master = master
-        master.title("Comparateur de Fibonacci")
+        master.title("Visiualiseur Fibonacci - JAOUAD Salah-Eddine")
         master.geometry("900x700")
         master.configure(bg='#f0f0f0')
 
